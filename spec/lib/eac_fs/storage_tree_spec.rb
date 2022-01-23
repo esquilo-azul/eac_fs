@@ -8,19 +8,19 @@ RSpec.describe ::EacFs::StorageTree do
   let(:instance) { described_class.new(tmpdir, 'instance') }
 
   it { expect(instance.read).to be_blank }
-  it { expect(instance.cached?).to eq(false) }
+  it { expect(instance.stored?).to eq(false) }
 
   context 'when instance is writed' do
     before { instance.write('STUB') }
 
     it { expect(instance.read).to eq('STUB') }
-    it { expect(instance.cached?).to eq(true) }
+    it { expect(instance.stored?).to eq(true) }
 
     context 'when instance is cleared' do
       before { instance.clear }
 
       it { expect(instance.read).to be_blank }
-      it { expect(instance.cached?).to eq(false) }
+      it { expect(instance.stored?).to eq(false) }
     end
   end
 
