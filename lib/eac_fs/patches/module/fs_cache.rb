@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require 'eac_fs/cache'
+require 'eac_fs/storage_tree'
 
 class Module
-  # @return [EacFs::Cache]
+  # @return [EacFs::StorageTree]
   def fs_cache
-    ::EacFs::Cache.context.current.child('fs_cache', *name.split('::'))
+    ::EacFs::StorageTree.context.current.child('fs_cache', *name.split('::'))
   end
 end

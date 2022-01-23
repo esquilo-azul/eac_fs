@@ -4,7 +4,7 @@ require 'eac_ruby_utils/core_ext'
 require 'fileutils'
 
 module EacFs
-  class Cache
+  class StorageTree
     enable_context
 
     CONTENT_FILE_NAME = '__content__'

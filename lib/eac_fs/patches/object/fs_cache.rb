@@ -3,7 +3,7 @@
 require 'eac_fs/patches/module/fs_cache'
 
 class Object
-  # @return [EacFs::Cache]
+  # @return [EacFs::StorageTree]
   def fs_cache
     oid = fs_cache_object_id
     oid = [oid.to_s] unless oid.is_a?(::Enumerable)
