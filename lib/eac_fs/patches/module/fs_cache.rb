@@ -3,8 +3,13 @@
 require 'eac_fs/contexts'
 
 class Module
-  # @return [EacFs::StorageTree]
-  def fs_cache
-    ::EacFs::Contexts.cache.current.child('fs_cache', *name.split('::'))
+  ::EacFs::Contexts::TYPES.each do |type|
+    method_name = "fs_#{type}"
+    class_eval <<~CODE, __FILE__, __LINE__ + 1
+      # @return [EacFs::StorageTree]
+      def #{method_name}
+        ::EacFs::Contexts.#{type}.current.child('#{method_name}', *name.split('::'))
+      end
+    CODE
   end
 end
