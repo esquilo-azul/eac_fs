@@ -5,8 +5,6 @@ require 'fileutils'
 
 module EacFs
   class StorageTree
-    enable_context
-
     CONTENT_FILE_NAME = '__content__'
 
     attr_reader :path
