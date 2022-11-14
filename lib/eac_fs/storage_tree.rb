@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'eac_ruby_utils/core_ext'
+require 'eac_ruby_utils/yaml'
 require 'fileutils'
 
 module EacFs
@@ -31,6 +32,13 @@ module EacFs
       write(yield) unless stored?
 
       read
+    end
+
+    # @return [Object]
+    def read_or_store_yaml(use_cache = true)
+      write_yaml(yield) unless stored? && use_cache
+
+      read_yaml
     end
 
     # @return [Object, nil]
