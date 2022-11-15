@@ -33,6 +33,12 @@ module EacFs
       read
     end
 
+    # @return [Object, nil]
+    def read_yaml
+      r = read
+      r.nil? ? nil : ::EacRubyUtils::Yaml.load(r)
+    end
+
     def write(value)
       assert_directory_on_path
       ::File.write(content_path, value)
