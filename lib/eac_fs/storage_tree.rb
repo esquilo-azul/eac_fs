@@ -45,6 +45,11 @@ module EacFs
       value
     end
 
+    def write_yaml(object)
+      write(::EacRubyUtils::Yaml.dump(object))
+      object
+    end
+
     def child(*child_path_parts)
       self.class.new(path, *child_path_parts)
     end
