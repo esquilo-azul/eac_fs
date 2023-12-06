@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'eac_fs/executables'
 require 'eac_ruby_utils/core_ext'
 require 'content-type'
 require 'filemagic'
@@ -21,6 +22,11 @@ module EacFs
     end
 
     delegate :charset, :mime_type, :subtype, :type, to: :content_type
+
+    # @return [Boolean]
+    def open?
+      ::EacFs::Executables.lsof.command(path).execute.fetch(:exit_code).zero?
+    end
 
     private
 
