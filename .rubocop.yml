@@ -1,9 +1,6 @@
 ---
 inherit_gem:
   eac_ruby_gem_support: ".rubocop.yml"
-Gemspec/RequiredRubyVersion:
-  Exclude:
-  - eac_fs.gemspec
 RSpec/BeEq:
   Exclude:
   - spec/lib/eac_fs/storage_tree_spec.rb
