@@ -35,7 +35,7 @@ module EacFs
     end
 
     # @return [Object]
-    def read_or_store_yaml(use_cache = true)
+    def read_or_store_yaml(use_cache = true) # rubocop:disable Style/OptionalBooleanParameter
       write_yaml(yield) unless stored? && use_cache
 
       read_yaml

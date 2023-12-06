@@ -1,9 +1,6 @@
 ---
 inherit_gem:
   eac_ruby_gem_support: ".rubocop.yml"
-Style/OptionalBooleanParameter:
-  Exclude:
-  - lib/eac_fs/storage_tree.rb
 Style/RedundantConstantBase:
   Exclude:
   - Gemfile
