@@ -31,9 +31,9 @@ module EacFs
       # @param dir [Pathname]
       # @return [Hash]
       def build_directory(dir)
-        dir.children.map do |child|
+        dir.children.to_h do |child|
           [fs_object_basename(child), build(child)]
-        end.to_h
+        end
       end
 
       # @param file [Pathname]
