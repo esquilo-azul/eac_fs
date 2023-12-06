@@ -12,8 +12,14 @@ module EacFs
     enable_simple_cache
     attr_reader :magic_string
 
-    def initialize(path)
-      @magic_string = ::FileMagic.new(FileMagic::MAGIC_MIME).file(path.to_pathname.to_path)
+    # @!attribute [r] path
+    #   @return [Pathname]
+
+    # @!method initialize(path)
+    #   @param path [Pathname]
+    common_constructor :path do
+      self.path = path.to_pathname
+      @magic_string = ::FileMagic.new(FileMagic::MAGIC_MIME).file(path.to_path)
     end
 
     delegate :charset, :mime_type, :subtype, :type, to: :content_type
