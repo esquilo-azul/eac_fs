@@ -3,8 +3,8 @@
 require 'active_support/core_ext/object/blank'
 require 'eac_fs/storage_tree'
 
-RSpec.describe ::EacFs::StorageTree do
-  let(:tmpdir) { ::Dir.mktmpdir }
+RSpec.describe EacFs::StorageTree do
+  let(:tmpdir) { Dir.mktmpdir }
   let(:instance) { described_class.new(tmpdir, 'instance') }
 
   it { expect(instance.read).to be_blank }
@@ -27,6 +27,6 @@ RSpec.describe ::EacFs::StorageTree do
   describe '#child' do
     let(:child) { instance.child('child') }
 
-    it { expect(child.path).to match(/\A#{::Regexp.quote(instance.path)}/) }
+    it { expect(child.path).to match(/\A#{Regexp.quote(instance.path)}/) }
   end
 end
