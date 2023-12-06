@@ -5,19 +5,15 @@ require 'eac_fs/patches/module/fs_cache'
 
 class Object
   ::EacFs::Contexts::TYPES.each do |type|
-    class_eval <<~CODE, __FILE__, __LINE__ + 1
-      # @return [EacFs::StorageTree]
-      def fs_#{type}
-        oid = fs_object_id_by_type(:'#{type}')
-        oid = [oid.to_s] unless oid.is_a?(::Enumerable)
-        oid.inject(fs_#{type}_parent) { |a, e| a.child(e.to_s) }
-      end
+    define_method "fs_#{type}" do
+      oid = fs_object_id_by_type(:"\#{type}")
+      oid = [oid.to_s] unless oid.is_a?(::Enumerable)
+      oid.inject(send("fs_#{type}_parent")) { |a, e| a.child(e.to_s) }
+    end
 
-      # @return [EacFs::StorageTree]
-      def fs_#{type}_parent
-        self.class.fs_#{type}
-      end
-    CODE
+    define_method "fs_#{type}_parent" do
+      self.class.send("fs_#{type}")
+    end
   end
 
   # @return [String, Array<String>]

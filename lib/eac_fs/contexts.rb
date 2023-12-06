@@ -11,9 +11,9 @@ module EacFs
       TYPES.each do |type|
         class_eval <<~CODE, __FILE__, __LINE__ + 1
           # @return [EacRubyUtils::Context<EacFs::StorageTree>]
-          def #{type}
-            @#{type} ||= ::EacRubyUtils::Context.new
-          end
+          def #{type}                                 # def cache
+            @#{type} ||= ::EacRubyUtils::Context.new  #   @cache ||= ::EacRubyUtils::Context.new
+          end                                         # end
         CODE
       end
     end

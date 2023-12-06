@@ -1,11 +1,6 @@
 ---
 inherit_gem:
   eac_ruby_gem_support: ".rubocop.yml"
-Style/DocumentDynamicEvalDefinition:
-  Exclude:
-  - lib/eac_fs/contexts.rb
-  - lib/eac_fs/patches/module/fs_cache.rb
-  - lib/eac_fs/patches/object/fs_cache.rb
 Style/HashEachMethods:
   Exclude:
   - lib/eac_fs/logs.rb
