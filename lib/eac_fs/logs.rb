@@ -25,7 +25,7 @@ module EacFs
 
     # @return [EacFs::Logs]
     def clean_all
-      log_set.values.each(&:clean)
+      log_set.each_value(&:clean)
     end
 
     # @return [EacFs::Logs]

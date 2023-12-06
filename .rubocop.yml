@@ -1,9 +1,6 @@
 ---
 inherit_gem:
   eac_ruby_gem_support: ".rubocop.yml"
-Style/HashEachMethods:
-  Exclude:
-  - lib/eac_fs/logs.rb
 Style/MapToHash:
   Exclude:
   - lib/eac_fs/comparator/build.rb
