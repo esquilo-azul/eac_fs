@@ -10,7 +10,6 @@ module EacFs
     UNKNOWN_CONTENT_TYPE = ::ContentType.parse(UNKNOWN_CONTENT_TYPE_STRING)
 
     enable_simple_cache
-    attr_reader :magic_string
 
     # @!attribute [r] path
     #   @return [Pathname]
@@ -19,7 +18,6 @@ module EacFs
     #   @param path [Pathname]
     common_constructor :path do
       self.path = path.to_pathname
-      @magic_string = ::FileMagic.new(FileMagic::MAGIC_MIME).file(path.to_path)
     end
 
     delegate :charset, :mime_type, :subtype, :type, to: :content_type
@@ -30,6 +28,11 @@ module EacFs
       ::ContentType.parse(magic_string)
     rescue ::Parslet::ParseFailed
       UNKNOWN_CONTENT_TYPE
+    end
+
+    # @return [String]
+    def magic_string_uncached
+      ::FileMagic.new(FileMagic::MAGIC_MIME).file(path.to_path)
     end
   end
 end
