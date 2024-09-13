@@ -6,7 +6,7 @@ require 'eac_fs/patches/module/fs_cache'
 class Object
   ::EacFs::Contexts::TYPES.each do |type|
     define_method "fs_#{type}" do
-      oid = fs_object_id_by_type(:"\#{type}")
+      oid = fs_object_id_by_type(type)
       oid = [oid.to_s] unless oid.is_a?(::Enumerable)
       oid.inject(send("fs_#{type}_parent")) { |a, e| a.child(e.to_s) }
     end
