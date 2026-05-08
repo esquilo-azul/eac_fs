@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
 require 'eac_ruby_utils'
-EacRubyUtils::RootModuleSetup.perform __FILE__ do
-  ignore 'patches'
-end
+EacRubyUtils::RootModuleSetup.perform __FILE__
 
 module EacFs
 end
 
-require 'eac_fs/patches'
+EacRubyUtils.require_sub(File.join(__dir__, 'eac_fs', 'patches'), recursive: true)
