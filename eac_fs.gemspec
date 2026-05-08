@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.summary     = 'Put here de description.'
 
   s.files = Dir['{lib}/**/*']
-  s.required_ruby_version = '>= 2.7'
+  s.required_ruby_version = '>= 3.2'
 
   s.add_dependency 'content-type', '~> 0.0', '>= 0.0.2'
   s.add_dependency 'eac_ruby_utils', '~> 0.130'

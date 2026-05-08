@@ -34,11 +34,11 @@ module EacFs
       source_value ? true : false
     end
 
-    def each_child(dir, &block)
+    def each_child(dir, &)
       if sort?
-        dir.each_child.sort_by { |p| [p.to_s] }.each(&block)
+        dir.each_child.sort_by { |p| [p.to_s] }.each(&)
       else
-        dir.each_child(&block)
+        dir.each_child(&)
       end
     end
 
