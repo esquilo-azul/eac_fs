@@ -14,9 +14,9 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 3.2'
 
   s.add_dependency 'content-type', '~> 0.0', '>= 0.0.2'
-  s.add_dependency 'eac_ruby_utils', '~> 0.130'
+  s.add_dependency 'eac_ruby_utils', '~> 0.131'
   s.add_dependency 'filesize', '~> 0.2'
   s.add_dependency 'ruby-filemagic', '~> 0.7', '>= 0.7.3'
 
-  s.add_development_dependency 'eac_ruby_gem_support', '~> 0.12', '>= 0.12.2'
+  s.add_development_dependency 'eac_ruby_gem_support', '~> 0.13'
 end
